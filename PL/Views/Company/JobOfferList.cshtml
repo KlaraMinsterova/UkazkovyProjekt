@@ -1,0 +1,52 @@
+﻿@using Castle.Core.Internal
+@model PL.Models.JobOffer.JobOfferListModel
+
+@{
+    ViewBag.Title = "JobOffersListView";
+}
+
+<h2>Your job offers</h2>
+
+<div class="form-group">
+    <hr />
+    <input type="button" style="width: 150px" value="Add new job offer" class="btn btn-primary" onclick="location.href='@Url.Action("JobOfferCreate", "Company")'" />
+</div>
+
+@if (!Model.JobOffers.IsNullOrEmpty())
+{
+    <table class="table">
+        <tr>
+            <th class="col-md-4">
+                Position
+            </th>
+            <th class="col-md-4">
+                Location
+            </th>
+            <th />
+        </tr>
+
+        @foreach (var jobOffer in Model.JobOffers)
+        {
+            <tr>
+                <td class="col-md-4">
+                    @jobOffer.Position
+                </td>
+                <td class="col-md-4">
+                    @jobOffer.Location
+                </td>
+                <td>
+                    <input type="button" class="btn btn-default" style="width: 150px" value="Show applications" onclick="location.href='@Url.Action("ApplicationList", "Company", new { jobOfferId = jobOffer.Id })'" />
+                    <input type="button" class="btn btn-default" style="width: 150px" value="Edit offer" onclick="location.href='@Url.Action("JobOfferEdit", "Company", new { id = jobOffer.Id })'" />
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="form-group">
+        <hr />
+        <h4 class="col-md-offset-2 col-md-10">You have no job offers yet</h4>
+        <hr class="col-md-12" />
+    </div>
+}

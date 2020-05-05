@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>Registration</h2>
+<div style="height: 20px"></div>
+
+<input type="button" style="width: 180px" value="Company Registration" class="btn btn-primary" onclick="location.href='@Url.Action("RegisterCompany", "Account")'"/>
+<input type="button" style="width: 180px" value="Applicant Registration" class="btn btn-primary" onclick="location.href='@Url.Action("RegisterApplicant", "Account")'" />

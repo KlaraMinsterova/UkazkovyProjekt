@@ -1,0 +1,39 @@
+﻿@using BL.DTOs.Enums
+@model BL.DTOs.ApplicationDto
+
+@{
+    ViewBag.Title = "ApplicationDetail";
+}
+
+<h2>Application for the job of @Model.JobOffer.Position</h2>
+<div style="height: 20px"></div>
+
+<div class="jumbotron">
+    <p>@Model.Text</p>
+    <div style="height: 30px"></div>
+    <p><strong>Name: </strong>@Model.Applicant.FirstName @Model.Applicant.LastName</p>
+    <p><strong>E-mail: </strong>@Model.Applicant.Email</p>
+    <p><strong>Tel.: </strong>@Model.Applicant.Tel</p>
+    <p><strong>Education: </strong>@Model.Applicant.Education</p>
+    <p><strong>Skills: </strong>@Model.Applicant.Skills</p>
+    <p><strong>Experience: </strong>@Model.Applicant.Experience</p>
+    <p><strong>Fields of interest: </strong>@Model.Applicant.KeywordString</p>
+    <div style="height: 30px"></div>
+
+    @if (Model.State == ApplicationState.Undecided)
+    {
+        <p class="pull-right">
+            <input type="button" class="btn btn-primary btn-lg" value="Accept" onclick="location.href = '@Url.Action("ApplicationAccept", "Company", new {id = Model.Id, jobOfferId = Model.JobOffer.Id})'" />
+            <input type="button" class="btn btn-primary btn-lg" value="Reject" onclick="location.href = '@Url.Action("ApplicationReject", "Company", new {id = Model.Id, jobOfferId = Model.JobOffer.Id})'" />
+        </p>
+    }
+    else if (Model.State == ApplicationState.Accepted)
+    {
+        <p class="text-muted pull-right">You have already accepted this</p>
+    }
+    else
+    {
+        <p class="text-muted pull-right">You have already rejected this</p>
+    }
+    <div style="height: 30px"></div>
+</div>

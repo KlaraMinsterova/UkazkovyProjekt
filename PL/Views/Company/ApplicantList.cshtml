@@ -1,0 +1,67 @@
+﻿@using Castle.Core.Internal
+@model PL.Models.Company.ApplicantListModel
+@{
+    ViewBag.Title = "ApplicantList";
+}
+
+<h2>Search for suitable applicants</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Keyword, "Field of interest", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Keyword, "-- All --", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@if (!Model.Applicants.IsNullOrEmpty())
+{
+    <table class="table">
+
+        <tr>
+            <th class="col-md-3">
+                Name
+            </th>
+            <th class="col-md-3">
+                E-mail
+            </th>
+            <th class="col-md-3">
+                Tel.
+            </th>
+        </tr>
+
+        @foreach (var applicant in Model.Applicants)
+        {
+            <tr>
+                <td class="col-md-3">
+                    @Html.ActionLink(applicant.FirstName + " " + applicant.LastName, "ApplicantDetail", "Company", new { id = applicant.Id }, null)
+                </td>
+                <td class="col-md-3">
+                    @applicant.Email
+                </td>
+                <td class="col-md-3">
+                    @applicant.Tel
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <div class="form-group">
+        <hr />
+        <h4 class="col-md-offset-2 col-md-10">No results found</h4>
+        <hr class="col-md-12" />
+    </div>
+}

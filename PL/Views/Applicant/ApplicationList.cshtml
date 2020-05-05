@@ -1,0 +1,79 @@
+﻿@using Castle.Core.Internal
+@model PL.Models.Application.ApplicationListModel
+
+@{
+    ViewBag.Title = "ApplicationList";
+}
+
+<h2>Your job applications</h2>
+
+@if (Model.Applications.IsNullOrEmpty() && Model.State == null)
+{
+    <div class="form-group">
+        <hr />
+        <h4 class="col-md-offset-2 col-md-10">You have no applications yet</h4>
+        <hr class="col-md-12" />
+    </div>
+}
+else
+{
+    using (Html.BeginForm())
+    {
+    @Html.HiddenFor(model => model.ApplicantId)
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.State, "Status", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.State, "-- All --", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+if (!Model.Applications.IsNullOrEmpty())
+{
+    <table class="table">
+        <tr>
+            <th class="col-md-4">
+                Position
+            </th>
+            <th class="col-md-4">
+                Company
+            </th>
+            <th class="col-md-4">
+                Status
+            </th>
+            <th />
+        </tr>
+
+        @foreach (var application in Model.Applications)
+        {
+            <tr>
+                <td class="col-md-4">
+                    @application.JobOffer.Position
+                </td>
+                <td class="col-md-4">
+                    @application.JobOffer.Company.Name
+                </td>
+                <td class="col-md-4">
+                    @application.State
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="form-group">
+        <hr />
+        <h4 class="col-md-offset-2 col-md-10">No results found</h4>
+        <hr class="col-md-12" />
+    </div>
+}
+}

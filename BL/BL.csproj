@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0680F6DA-CC23-469A-916D-FBBD88E63443}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BL</RootNamespace>
+    <AssemblyName>BL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.4.1.1\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\BusinessLayerInstaller.cs" />
+    <Compile Include="Config\MappingConfig.cs" />
+    <Compile Include="DTOs\ApplicantDto.cs" />
+    <Compile Include="DTOs\ApplicationDto.cs" />
+    <Compile Include="DTOs\Common\DtoBase.cs" />
+    <Compile Include="DTOs\Common\FilterDtoBase.cs" />
+    <Compile Include="DTOs\Common\QueryResultDto.cs" />
+    <Compile Include="DTOs\CompanyDto.cs" />
+    <Compile Include="DTOs\Enums\ApplicationState.cs" />
+    <Compile Include="DTOs\Enums\Keyword.cs" />
+    <Compile Include="DTOs\FavoriteJobDto.cs" />
+    <Compile Include="DTOs\Filters\ApplicationFilterDto.cs" />
+    <Compile Include="DTOs\Filters\ApplicantFilterDto.cs" />
+    <Compile Include="DTOs\Filters\FavoriteJobFilterDto.cs" />
+    <Compile Include="DTOs\Filters\JobOfferFilterDto.cs" />
+    <Compile Include="DTOs\Filters\CompanyFilterDto.cs" />
+    <Compile Include="DTOs\Filters\KeywordApplicantFilterDto.cs" />
+    <Compile Include="DTOs\Filters\KeywordJobOfferFilterDto.cs" />
+    <Compile Include="DTOs\Filters\UserFilterDto.cs" />
+    <Compile Include="DTOs\JobOfferDto.cs" />
+    <Compile Include="DTOs\KeywordApplicantDto.cs" />
+    <Compile Include="DTOs\KeywordJobOfferDto.cs" />
+    <Compile Include="DTOs\UserCompanyCreateDto.cs" />
+    <Compile Include="DTOs\UserApplicantCreateDto.cs" />
+    <Compile Include="DTOs\UserDto.cs" />
+    <Compile Include="Facades\ApplicantFacade.cs" />
+    <Compile Include="Facades\ApplicationFacade.cs" />
+    <Compile Include="Facades\CompanyFacade.cs" />
+    <Compile Include="Facades\Common\FacadeBase.cs" />
+    <Compile Include="Facades\JobOfferFacade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryObjects\ApplicantQueryObject.cs" />
+    <Compile Include="QueryObjects\ApplicationQueryObject.cs" />
+    <Compile Include="QueryObjects\CompanyQueryObject.cs" />
+    <Compile Include="QueryObjects\Common\QueryObjectBase.cs" />
+    <Compile Include="QueryObjects\FavoriteJobQueryObject.cs" />
+    <Compile Include="QueryObjects\JobOfferQueryObject.cs" />
+    <Compile Include="QueryObjects\KeywordApplicantQueryObject.cs" />
+    <Compile Include="QueryObjects\KeywordJobOfferQueryObject.cs" />
+    <Compile Include="QueryObjects\UserQueryObject.cs" />
+    <Compile Include="Services\Applicants\ApplicantService.cs" />
+    <Compile Include="Services\Applicants\IApplicantService.cs" />
+    <Compile Include="Services\Applications\ApplicationService.cs" />
+    <Compile Include="Services\Applications\IApplicationService.cs" />
+    <Compile Include="Services\Common\CrudQueryServiceBase.cs" />
+    <Compile Include="Services\Common\ServiceBase.cs" />
+    <Compile Include="Services\Companies\CompanyService.cs" />
+    <Compile Include="Services\Companies\ICompanyService.cs" />
+    <Compile Include="Services\FavoriteJobs\FavoriteJobService.cs" />
+    <Compile Include="Services\FavoriteJobs\IFavoriteJobService.cs" />
+    <Compile Include="Services\JobOffers\IJobOfferService.cs" />
+    <Compile Include="Services\JobOffers\JobOfferService.cs" />
+    <Compile Include="Services\KeywordsApplicantService\IKeywordsApplicantService.cs" />
+    <Compile Include="Services\KeywordsApplicantService\KeywordsApplicantService.cs" />
+    <Compile Include="Services\KeywordsJobOfferService\IKeywordsJobOfferService.cs" />
+    <Compile Include="Services\KeywordsJobOfferService\KeywordsJobOfferService.cs" />
+    <Compile Include="Services\Users\IUserCompanyService.cs" />
+    <Compile Include="Services\Users\IUserApplicantService.cs" />
+    <Compile Include="Services\Users\UserApplicantService.cs" />
+    <Compile Include="Services\Users\UserCompanyService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{7A2B26B0-99E8-4D94-826F-DCA79611107C}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{A62A5ACE-2456-4287-90F5-A91785080132}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

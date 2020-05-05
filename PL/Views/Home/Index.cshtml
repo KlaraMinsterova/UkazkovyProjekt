@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Job Portal</h1>
+    <p class="lead">Where employees and employers connect</p>
+</div>
+
+<div class="jumbotron">
+    <p>Please log in first.</p>
+    <p><input type="button" class="btn btn-primary btn-lg" style="width: 220px" value="Log In" onclick="location.href = '@Url.Action("Login", "Account")'" /></p>
+    <div style="height: 30px"></div>
+    <p>If you are new here, start with a registration.</p>
+    <p>
+        <input type="button" class="btn btn-primary btn-lg" style="width: 220px" value="Register As Applicant" onclick="location.href = '@Url.Action("RegisterApplicant", "Account")'" />
+        <input type="button" class="btn btn-primary btn-lg" style="width: 220px" value="Register As Company" onclick="location.href = '@Url.Action("RegisterCompany", "Account")'" />
+    </p>
+</div>

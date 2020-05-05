@@ -1,0 +1,39 @@
+﻿@model PL.Models.JobOffer.JobOfferDetailModel
+
+@{
+    ViewBag.Title = "JobOfferDetail";
+}
+
+<div class="jumbotron">
+    <h1>@Model.JobOffer.Position</h1>
+    <div style="height: 30px"></div>
+    <p>@Model.JobOffer.Description</p>
+    <div style="height: 30px"></div>
+    <p><strong>Company: </strong>@Model.JobOffer.Company.Name</p>
+    <p><strong>Location: </strong>@Model.JobOffer.Location</p>
+    <p><strong>Fields: </strong>@Model.JobOffer.KeywordString</p>
+    <div style="height: 30px"></div>
+    @if (!Model.AlreadyApplied)
+    {
+        <p><input type="button" class="btn btn-primary btn-lg pull-right" style="width: 220px" value="Apply now" onclick="location.href = '@Url.Action("ApplicationCreate", "Applicant", new {jobOfferId = Model.JobOffer.Id})'" /></p>
+        <div style="height: 50px"></div>
+        if (!Model.AlreadyFavorite)
+        {
+            <input type="button" class="btn btn-primary btn-lg pull-right" style="width: 220px" value="Save for later" onclick="location.href = '@Url.Action("FavoriteJobCreate", "Applicant", new {jobOfferId = Model.JobOffer.Id})'" />
+        }
+        else
+        {
+            <div style="height: 10px"></div>
+            <p class="text-muted pull-right">You have already saved this</p>
+            <div style="height: 50px"></div>
+            <p>
+                <input type="button" class="btn btn-primary btn-lg pull-right" style="width: 220px" value="Remove from saved" onclick="location.href = '@Url.Action("FavoriteJobDelete", "Applicant", new {jobOfferId = Model.JobOffer.Id})'" />
+            </p>
+        }
+    }
+    else
+    {
+        <p class="text-muted pull-right">You have already applied</p>
+    }
+    <div style="height: 30px"></div>
+</div>

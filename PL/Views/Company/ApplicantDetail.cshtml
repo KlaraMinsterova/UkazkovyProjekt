@@ -1,0 +1,16 @@
+﻿@model BL.DTOs.ApplicantDto
+@{
+    ViewBag.Title = "ApplicantDetail";
+}
+
+<div class="jumbotron">
+    <h1>@Model.FirstName @Model.LastName</h1>
+    <div style="height: 30px"></div>
+    <p><strong>E-mail: </strong>@Model.Email</p>
+    <p><strong>Tel.: </strong>@Model.Tel</p>
+    <p><strong>Education: </strong>@Model.Education</p>
+    <p><strong>Skills: </strong>@Model.Skills</p>
+    <p><strong>Experience: </strong>@Model.Experience</p>
+    <p><strong>Fields of interest: </strong>@Model.KeywordString</p>
+    <div style="height: 30px"></div>
+</div>

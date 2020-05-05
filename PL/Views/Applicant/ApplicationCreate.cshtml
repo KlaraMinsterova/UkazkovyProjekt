@@ -1,0 +1,34 @@
+﻿@model BL.DTOs.ApplicationDto
+
+@{
+    ViewBag.Title = "ApplicationCreate";
+}
+
+<h2>Apply for the job of @Model.JobOffer.Position</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.JobOfferId)
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="col-md-offset-2">
+            <p>If you wish, add a cover letter here.</p>
+            <p>Information from your profile will be attached automatically.</p>
+            <br />
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Text, 5, 200, new { style = "resize: none; border-radius: 5px;" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Apply" class="btn btn-primary" />
+                <input type="button" value="Cancel" class="btn btn-danger" onclick="location.href = '@Url.Action("JobOfferDetail", "Applicant", new { id = Model.JobOfferId })'" />
+            </div>
+        </div>
+    </div>
+}

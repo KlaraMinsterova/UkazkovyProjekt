@@ -1,0 +1,73 @@
+﻿@using Castle.Core.Internal
+@model PL.Models.Applicant.CompanyListModel
+@{
+    ViewBag.Title = "CompanyList";
+}
+
+<h2>Companies</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Filter.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Filter.Name, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@if (!Model.Companies.IsNullOrEmpty())
+{
+    <table class="table">
+
+        <tr>
+            <th class="col-md-3">
+                Name
+            </th>
+            <th class="col-md-3">
+                Address
+            </th>
+            <th class="col-md-3">
+                E-mail
+            </th>
+            <th class="col-md-3">
+                Tel.
+            </th>
+        </tr>
+
+        @foreach (var company in Model.Companies)
+        {
+            <tr>
+                <td class="col-md-3">
+                    @company.Name
+                </td>
+                <td class="col-md-3">
+                    @company.Address
+                </td>
+                <td class="col-md-3">
+                    @company.Email
+                </td>
+                <td class="col-md-3">
+                    @company.Tel
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <div class="form-group">
+        <hr />
+        <h4 class="col-md-offset-2 col-md-10">No results found</h4>
+        <hr class="col-md-12" />
+    </div>
+}
